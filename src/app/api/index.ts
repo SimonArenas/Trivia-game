@@ -1,6 +1,8 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { getRandomNumber } from "../utils";
 
+const API_URL = "http://jservice.io/api";
+
 export const useGetCategories = () => {
   //The random number is to get a new offset each time, so categories are diff each game
   const randomNumber = getRandomNumber(10000);
@@ -11,7 +13,7 @@ export const useGetCategories = () => {
     queryFn: async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/categories?count=15&offset=${randomNumber}`
+          `${API_URL}/categories?count=15&offset=${randomNumber}`
         );
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -40,7 +42,7 @@ export const useGetCluesByCategoryIDs = (categoryIDs: number[] | undefined) => {
           queryFn: async () => {
             try {
               const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_URL}/clues?category=${categoryID}`
+                `${API_URL}/clues?category=${categoryID}`
               );
               if (!response.ok) {
                 throw new Error("Network response was not ok");
