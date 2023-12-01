@@ -32,7 +32,7 @@ const GameBoard = ({
             {categoriesAndQuestions.map((category, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div className="flex justify-center items-center text-center mb-4 text-lg font-semibold text-white bg-blue-600 py-2 px-4 rounded-t-lg shadow-lg">
-                  <span className="capitalize pl-2">{category.title}</span>
+                  <span className="capitalize">{category.title}</span>
                 </div>
                 {category.clues.map((clue) => (
                   <Card key={clue.id} clue={clue} />
