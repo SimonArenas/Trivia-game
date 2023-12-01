@@ -1,7 +1,7 @@
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { getRandomNumber } from "../utils";
 
-const API_URL = "http://jservice.io/api";
+const API_URL = "https://jservice.io/api";
 
 export const useGetCategories = () => {
   //The random number is to get a new offset each time, so categories are diff each game

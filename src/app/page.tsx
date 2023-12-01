@@ -1,9 +1,11 @@
 "use client";
+import { motion } from "framer-motion";
 import { useGetCategories, useGetCluesByCategoryIDs } from "./api";
 import { categoriesSerializer, cluesSerializer } from "./api/api.serializer";
 import GameBoard from "./components/GameBoard";
 import { Hero } from "./components/Hero";
 import { useStore } from "./context";
+import { fadeInOut } from "./utils";
 
 export default function Home() {
   const { gameStatus, setGameStatus } = useStore();
@@ -18,7 +20,12 @@ export default function Home() {
   const questionsSerialized = cluesSerializer(categories, questions);
 
   return (
-    <>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={fadeInOut}
+    >
       <Hero
         gameStatus={gameStatus}
         isCTALoading={!questions}
@@ -27,6 +34,6 @@ export default function Home() {
       {questions && gameStatus !== "NOT_STARTED" && (
         <GameBoard questions={questionsSerialized} />
       )}
-    </>
+    </motion.div>
   );
 }
